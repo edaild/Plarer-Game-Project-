@@ -1,2 +1,2 @@
-# Plarer-Game-Project-
-Plarer Game Project 
+# player-Game-Project-
+player Game Project 
