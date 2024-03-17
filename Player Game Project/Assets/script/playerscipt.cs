@@ -22,19 +22,33 @@ public class playerscipt : MonoBehaviour
     }
         void Update()
         {
-            hAxis = Input.GetAxisRaw("Horizontal");
-            vAxis = Input.GetAxisRaw("Vertical");
-            WDown = Input.GetButton("wolk");
+        GetInput();
+        Move();
+        Turn();
+        }
 
-            moveVec = new Vector3(hAxis, 0, vAxis).normalized;
+
+    void GetInput()
+    {
+        hAxis = Input.GetAxisRaw("Horizontal");
+        vAxis = Input.GetAxisRaw("Vertical");
+        WDown = Input.GetButton("wolk");
+    }
+
+    void Move()
+    {
+        moveVec = new Vector3(hAxis, 0, vAxis).normalized;
 
         transform.position += moveVec * speed * (WDown ? 0.3f : 1f) * Time.deltaTime;
 
-            anim.SetBool("isRun", moveVec != Vector3.zero);
-            anim.SetBool("isWolk", WDown);
+        anim.SetBool("isRun", moveVec != Vector3.zero);
+        anim.SetBool("isWolk", WDown);
+    }
 
-
+    void Turn()
+    {
         transform.LookAt(transform.position + moveVec);
-        }
+    }
     
+
 }
