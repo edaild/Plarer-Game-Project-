@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,23 +10,28 @@ public class playerscipt : MonoBehaviour
     float hAxis;
     float vAxis;
     bool WDown;
+    bool jump;
 
+    bool isJump;
 
     Vector3 moveVec;
 
+    Rigidbody rb; // 케릭터를 움직이기 위한 변수
     Animator anim;
 
     void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
 
     }
-        void Update()
-        {
+    void Update()
+    {
         GetInput();
         Move();
         Turn();
-        }
+        Jump();
+    }
 
 
     void GetInput()
@@ -33,6 +39,7 @@ public class playerscipt : MonoBehaviour
         hAxis = Input.GetAxisRaw("Horizontal");
         vAxis = Input.GetAxisRaw("Vertical");
         WDown = Input.GetButton("wolk");
+        jump = Input.GetButtonDown("Jump");
     }
 
     void Move()
@@ -49,6 +56,22 @@ public class playerscipt : MonoBehaviour
     {
         transform.LookAt(transform.position + moveVec);
     }
-    
 
+    void Jump() // 점프
+    {
+        if (jump && !isJump) // ! 부정문 bool 값만 가능
+        {
+            rb.AddForce(Vector3.up * 8, ForceMode.Impulse);
+            // anim.SetBool("isJump", true);
+         //   isJump = true;
+        }
+    }
+    private void OnCollisionEnter(Collision collision) 
+    {
+        if (collision.gameObject.tag == "Floor") {
+           // anim.SetBool("isJump", false);
+            isJump = false;
+        }
+    }
 }
+
