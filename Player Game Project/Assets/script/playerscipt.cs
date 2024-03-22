@@ -16,7 +16,7 @@ public class playerscipt : MonoBehaviour
 
     Vector3 moveVec;
 
-    Rigidbody rb; // 케릭터를 움직이기 위한 변수
+    Rigidbody rb; // 케릭터를 움직이기 위해 선언
     Animator anim;
 
     void Awake()
