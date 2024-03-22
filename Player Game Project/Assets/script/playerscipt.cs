@@ -59,7 +59,7 @@ public class playerscipt : MonoBehaviour
 
     void Jump() // 점프
     {
-        if (jump && isJump) // ! 부정문 bool 값만 가능
+        if (jump && !isJump) // ! 부정문 bool 값만 가능
         {
             rb.AddForce(Vector3.up * 8, ForceMode.Impulse);
                 anim.SetBool("isJump", true);
