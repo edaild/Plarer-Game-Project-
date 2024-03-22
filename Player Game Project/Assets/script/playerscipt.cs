@@ -12,7 +12,7 @@ public class playerscipt : MonoBehaviour
     bool WDown;
     bool jump;
 
-    bool isJump;
+    // bool isJump;
 
     Vector3 moveVec;
 
@@ -70,7 +70,7 @@ public class playerscipt : MonoBehaviour
     {
         if (collision.gameObject.tag == "Floor") {
            // anim.SetBool("isJump", false);
-            isJump = false;
+           // isJump = false;
         }
     }
 }
