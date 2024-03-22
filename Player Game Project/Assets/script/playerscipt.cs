@@ -12,7 +12,7 @@ public class playerscipt : MonoBehaviour
     bool WDown;
     bool jump;
 
-    // bool isJump;
+    bool isJump;
 
     Vector3 moveVec;
 
@@ -59,18 +59,18 @@ public class playerscipt : MonoBehaviour
 
     void Jump() // 점프
     {
-        if (jump /*&& isJump*/) // ! 부정문 bool 값만 가능
+        if (jump && isJump) // ! 부정문 bool 값만 가능
         {
             rb.AddForce(Vector3.up * 8, ForceMode.Impulse);
-            // anim.SetBool("isJump", true);
-         //   isJump = true;
+                anim.SetBool("isJump", true);
+                 isJump = true;
         }
     }
     private void OnCollisionEnter(Collision collision) 
     {
         if (collision.gameObject.tag == "Floor") {
-           // anim.SetBool("isJump", false);
-           // isJump = false;
+           anim.SetBool("isJump", false);
+           isJump = false;
         }
     }
 }
